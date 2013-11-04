@@ -1,0 +1,13 @@
+<h1>Twitter</h1>
+<%= form_for @one_tweet, :url => create_path(@one_tweet) do |t| %>
+    <div>
+      <%= t.label :content %> <%= t.text_field :content %> <%= t.submit "Submit" %>
+    </div>
+<% end %>
+<% if @tweets.count < 1 %>
+    <p>There are no tweets to display.</p>
+<% else %>
+    <% @tweets.each do |tweet| %>
+        <p><%= tweet.content %></p>
+    <% end %>
+<% end %>
