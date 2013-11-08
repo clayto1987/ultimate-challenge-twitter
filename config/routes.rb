@@ -1,8 +1,8 @@
 TwitterChallenge::Application.routes.draw do
-  #root :to => 'tweets#index', :via => :get
+  root :to => 'tweets#index', :via => :get
 
-  match 'tweets' => 'tweets#index', :as => 'index', :via => :get
-  match 'tweets' => 'tweets#create', :as => 'create', :via => :post
+  #match 'tweets' => 'tweets#index', :as => 'index', :via => :get
+  match '/' => 'tweets#create', :as => 'create', :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,13 +1,19 @@
 <h1>Twitter</h1>
+<% if flash[:success] %>
+    <p class="success"><%= flash[:success] %></p>
+<% end %>
 <%= form_for @one_tweet, :url => create_path(@one_tweet) do |t| %>
-    <div>
-      <%= t.label :content %> <%= t.text_field :content %> <%= t.submit "Submit" %>
-    </div>
+    <% if @one_tweet.errors.any? %>
+        <p class="error">Sorry, tweet must be between 1-140 characters long.</p>
+    <% end %>
+    <div id="inputs"><%= t.text_field :content %> <%= t.submit 'Submit' %></div>
 <% end %>
 <% if @tweets.count < 1 %>
     <p>There are no tweets to display.</p>
 <% else %>
-    <% @tweets.each do |tweet| %>
-        <p><%= tweet.content %></p>
-    <% end %>
+    <ul id="tweets">
+        <% @tweets.each do |tweet| %>
+            <li><%= tweet.content %></li>
+        <% end %>
+    </ul>
 <% end %>
