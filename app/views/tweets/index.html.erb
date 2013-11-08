@@ -8,7 +8,7 @@
     <% end %>
     <div id="inputs"><%= t.text_field :content %> <%= t.submit 'Submit' %></div>
 <% end %>
-<% if @tweets.count < 1 %>
+<% if @tweets.count.zero? %>
     <p>There are no tweets to display.</p>
 <% else %>
     <ul id="tweets">
